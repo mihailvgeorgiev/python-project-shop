@@ -1,1 +1,1 @@
-web: gunicorn projectshop.wsgi
+web: gunicorn projectshop.projectshop.wsgi
