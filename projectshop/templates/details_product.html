@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% include 'base.html' %}
+{% load static %}
+{% load auth_extras %}
+<html>
+<head>
+    <title>Ecom</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/details_product.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+<main class="container">
+
+  <!-- Left Column / Headphones Image -->
+  <div class="left-column">
+    <img data-image="black" src="{{ product.image }}" style="padding-right: 20%">
+  </div>
+
+
+  <!-- Right Column -->
+  <div class="right-column">
+
+    <!-- Product Description -->
+    <div class="product-description">
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.description }}</p>
+    </div>
+
+    <!-- Product Configuration -->
+    <div class="product-configuration">
+
+
+    <!-- Product Pricing -->
+    <div class="product-price">
+      <span>${{ product.price|floatformat:2 }}</span>
+        {% if request.user|has_group:"product_team" %}
+            <a href="{% url 'update_product' product.id %}" class="cart-btn">Update</a>
+        {% elif product.quantity > 0 %}
+      <a href="{% url 'add_product' product.id %}" class="cart-btn">Add to cart</a>
+        {% else %}
+        <h4 style="color: red;font-weight: bold">Out of stock!</h4>
+        {% endif %}
+    </div>
+  </div>
+  </div>
+</main>
+</body>

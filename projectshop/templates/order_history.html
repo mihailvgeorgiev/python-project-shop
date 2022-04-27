@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a  class="btn btn-outline-dark" href="{% url 'products' %}">&#x2190; Continue Shopping</a>
+        </div>
+
+        <br>
+        <div class="box-element">
+            <div class="cart-row">
+                <div style="flex:2"><strong>Address</strong></div>
+                <div style="flex:1"><strong>Phone</strong></div>
+                <div style="flex:1"><strong>Email</strong></div>
+                <div style="flex:1"><strong>Price</strong></div>
+            </div>
+            {% for order in orders %}
+            <div class="cart-row">
+                <div style="flex:2"><p>{{ order.address}}</p></div>
+                <div style="flex:1"><p>{{ order.phone }}</p></div>
+                <div style="flex:1"><p>{{ order.email }}</p></div>
+                <div style="flex:1"><p>${{ order.total_price|floatformat:2 }}</p></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

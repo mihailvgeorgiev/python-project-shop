@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1 style="text-align: center;font-weight: bold"> Create Product </h1>
+    <div style="width: 100vh; display: flex;justify-content: center;margin-top: 4%">
+  <form style="margin: 0 auto;" method="post" action="{% url 'create_product' %}">
+                {{ form.as_p }}
+                {% csrf_token %}
+
+                <button class="btn btn-primary mt-2" type="submit">Create Product</button>
+            </form>
+    </div>
+{% endblock %}

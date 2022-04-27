@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="text-align: center;font-weight: bold">Edit Product</h1>
+    <div style="width: 100vh; display: flex;justify-content: center;margin-top: 4%">
+                <form method="post" action="{% url 'update_product' product_id %}">
+                {{ form.as_p }}
+                {% csrf_token %}
+
+                <button style="background-color: #ffc107;width: 300px; color: black" class="btn btn-primary mt-2" type="submit">Edit</button>
+            </form>
+
+    </div>
+    <div style="width: 100vh; display: flex;justify-content: center;margin-top: 4%">
+    <a href="{% url 'delete_product' product_id %}"><p><button style="background-color: red;width: 300px;height: 40px;position: center">Delete Product</button></p></a>
+    </div>
+{% endblock %}

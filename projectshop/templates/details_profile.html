@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Add icon library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: black;
+  background-color:#ffc107;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  font-size: 22px;
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}</style>
+
+<div class="card">
+  <img src="{{ profile.image }}">
+
+    <h1>{{ profile.first_name }} {{ profile.last_name }}</h1>
+  <p class="title">{{ profile.gender }}</p>
+
+  <a href="{% url 'edit_profile' %}"><p><button>Edit Profile</button></p></a>
+  <a href="{% url 'delete_profile' %}"><p><button style="background-color: red">Delete Profile</button></p></a>
+</div>
+{% endblock %}

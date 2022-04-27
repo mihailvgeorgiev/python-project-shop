@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load auth_extras %}
+{% block content %}
+    {% if products_list %}
+
+    <div class="row">
+        {% for product in products_list %}
+        <div class="col-lg-4">
+            <img class="thumbnail" src="{{ product.image }}" style="overflow: hidden; height: 250px; width: 350px; object-fit: cover">
+            <div class="box-element product" style="width: 350px;height: 140px">
+                <h6><strong>{{ product.name }}</strong></h6>
+                <hr>
+                {% if product.quantity == 0 %}
+                <h6 style="color: red; font-weight: bold;">Out of stock!</h6>
+                {% elif request.user|has_group:"product_team" %}
+                    <a class="btn btn-outline-secondary add-btn" href="{% url 'update_product' product.id %}">Update</a>
+                {% else %}
+                <a class="btn btn-outline-secondary add-btn" href="{% url 'add_product' product.id %}">Add to Cart</a>
+                {% endif %}
+                <a class="btn btn-outline-success" href="{% url 'details_product' product.id%}">View</a>
+                <h4 style="display: inline-block;float: right">${{ product.price|floatformat:2 }}</h4>
+            </div>
+        </div>
+
+    {% endfor %}
+
+    {% else %}
+        <h1>No products have been added yet!</h1>
+    {% endif %}
+
+
+    </div>
+{% endblock content %}
