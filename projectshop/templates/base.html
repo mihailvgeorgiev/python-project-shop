@@ -33,6 +33,7 @@
                 <a class="nav-link" href="{% url 'index' %}"> About us <span class="sr-only">(current)</span></a>
             </li>
         </ul>
+{% if user.is_authenticated and not request.user|has_group:"product_team" %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
         <ul class="navbar-nav mr-auto">
@@ -50,16 +51,14 @@
                 <a class="nav-link" href="{% url 'order_history' %}"> My orders <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-    
+     {% endif %}
 
-    {% if request.user|has_group:"product_team" %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'create_product' %}"> Create Product <span class="sr-only">(current)</span></a>
             </li>
         </ul>
-    {% endif %}
 
         {% if not user.is_authenticated %}
         <div class="form-inline my-2 my-lg-0">
@@ -71,9 +70,11 @@
         {% else %}
             <div class="form-inline my-2 my-lg-0">
                 <a href="{% url 'logout' %}?next={% url 'products' %}" class="btn btn-warning">Logout</a>
+    {% if user.is_authenticated%}
             <a href="{% url 'cart' %}">
                 <img id="cart-icon" src="{% static 'images/cart.png' %}">
             </a>
+        {% endif %}
                 {% endif %}
 
         </div>
