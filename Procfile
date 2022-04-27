@@ -1,1 +1,1 @@
-web: gunicorn projectshop.projectshop.wsgi
+web: gunicorn --pythonpath projectshop projectshop.wsgi
