@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'projectshop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd67jpqkfu4cdcl',
-        'USER': 'vosdcnypyoelbi',
-        'PASSWORD': '8587c7776a877c8948ec56210cf58ebfa5ca0474d7b61cb9a04e0a5410d4715c',
-        'HOST': 'ec2-99-80-170-190.eu-west-1.compute.amazonaws.com',
+        'NAME': 'dfr0tks3nrrq1l',
+        'USER': 'synsdpxvrzfouj',
+        'PASSWORD': '2a565c7bded43760b55d869376907641a33d060134b0ba951b207171230c46ae',
+        'HOST': 'ec2-3-248-121-12.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }
